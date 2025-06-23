@@ -18,15 +18,16 @@ class Cleaner(Employee):
 
 class Manager(Employee):# Так происходит наследование
     def __init__(self, name):
-        super().__init__(name, 45000, 10000)  # Позволяет вызвать метод из класса родителя
+        super().__init__(name, 45000, 15)  # Позволяет вызвать метод из класса родителя
 
 
 class CEO(Employee):
     def __init__(self, name):
-       super().__init__(name, 105000, 20000)#Позволяет вызвать метод из класса родителя
+       super().__init__(name, 105000, 200)#Позволяет вызвать метод из класса родителя
 
-    def calculate_total_bonus(self):# Позволяет переписать метод предка
-        return 2000000
+def calc_bonuses(employees: list[Employee]):
+    for employee in employees:
+        print(f'Calc bonus for {employee.name}, it is = {employee.calculate_total_bonus()}')
 if __name__ == '__main__':
     masha = Cleaner('Maria Ivanovna')
     print(masha)
@@ -34,3 +35,5 @@ if __name__ == '__main__':
     print(grisha)
     ivan = CEO('Ivan Pavlovich')
     print(ivan)
+    a_list = [masha, grisha, ivan]
+    calc_bonuses(a_list)
