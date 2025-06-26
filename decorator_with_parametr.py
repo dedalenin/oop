@@ -30,7 +30,7 @@ def typed_str(function):
 
     return wrapped
 
-@typed(int) #real_decorator with int
+#@typed(int) #real_decorator with int
 def calculate(a, b, c):
     return a + b + c
 
@@ -42,5 +42,6 @@ def convert(a, b):
 
 if __name__ == '__main__':
     # calculate = typed_int(calculate)
+    calculate = typed(int)(calculate) # Сначала вызывается функция и потом передается еще раз функция
     print(calculate(1, 2, 3))
     print(convert('None', ' hello'))
